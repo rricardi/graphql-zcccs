@@ -32,14 +32,11 @@ let schema = new graphql.GraphQLSchema({
 				args: {
 				  id:{
 				    type: graphql.GraphQLInt
-				  },
-				  name:{
-				    type: graphql.GraphQLString
 				  }
 				},
 				resolve: function (_ , args) {
 					let response = users.find(function (user){
-						return (user.id === args.id && user.name === args.name)
+						return (user.id === args.id)
 					})
 					return response
 				}
