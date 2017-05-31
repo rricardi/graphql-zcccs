@@ -25,19 +25,20 @@ let userType = new graphql.GraphQLObjectType({
 
 let schema = new graphql.GraphQLSchema({
     query: new graphql.GraphQLObjectType({
-            name: 'Query',
-            fields: {
+        name: 'Query',
+        fields: {
             user: {
                 type: userType,
                 args: {
-                  id:{
-                    type: graphql.GraphQLInt
-                  }
+                    id: {
+                        type: graphql.GraphQLInt
+                    }
                 },
-                resolve: function (_ , args) {
-                    let response = users.find(function (user){
+                resolve: function (_, args) {
+                    let response = users.find(function (user) {
                         return (user.id === args.id)
                     })
+
                     return response
                 }
             }
